@@ -4,15 +4,16 @@ import Tilt from "react-parallax-tilt";
 
 const TiltingCard = ({ children }: PropsWithChildren) => {
   return (
-    <Tilt
-      className={"tilt"}
-      glareEnable={true}
-      glareMaxOpacity={0.1}
-      glareColor="white"
-      tiltMaxAngleX={2}
-      tiltMaxAngleY={2}
-      perspective={500}
-    >
+    // <Tilt
+    //   className={"tilt"}
+    //   glareEnable={true}
+    //   glareMaxOpacity={0.1}
+    //   glareColor="white"
+    //   tiltMaxAngleX={2}
+    //   tiltMaxAngleY={2}
+    //   perspective={500}
+    // >
+    <div>
       <motion.div
         className={"heroBG"}
         initial={{
@@ -39,7 +40,8 @@ const TiltingCard = ({ children }: PropsWithChildren) => {
       <div className={"flex flex-col justify-between items-center"}>
         {children}
       </div>
-    </Tilt>
+    </div>
+    // </Tilt>
   );
 };
 
