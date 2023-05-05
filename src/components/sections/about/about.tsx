@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useOnScreen from "@hooks/useOnScreen";
-import gsap from "gsap";
+import gsap from "gsap-trial";
 import cn from "classnames";
 
 const About = () => {
@@ -22,7 +22,6 @@ const About = () => {
   return (
     <section
       className={"about h-screen w-full flex flex-col justify-center"}
-      data-scroll-section
       ref={ref}
     >
       <h1

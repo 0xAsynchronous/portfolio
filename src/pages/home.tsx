@@ -8,12 +8,25 @@ import Preloader from "@components/preloader/preloader";
 import useLocoScroll from "@hooks/useLocoScroll";
 import "../index.scss";
 import CustomCursorContext from "@components/CustomCursor/context/customCursorContext";
+import gsap from "gsap-trial";
+import { ScrollTrigger } from "gsap-trial/ScrollTrigger";
+import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 
 export default function Home() {
-  const [preloader, setPreloader] = useState(true);
+  const [preloader, setPreloader] = useState(false);
   const { setType } = useContext(CustomCursorContext);
   const mainRef = useRef(null);
-  useLocoScroll(!preloader, mainRef);
+  //useLocoScroll(!preloader, mainRef);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      normalizeScroll: true,
+    });
+  }, []);
 
   useEffect(() => {
     const interactiveElements = document.querySelectorAll(".cursor-pointer");
@@ -39,12 +52,14 @@ export default function Home() {
       {preloader ? (
         <Preloader setPreloader={setPreloader} />
       ) : (
-        <main ref={mainRef}>
-          <Hero />
-          <About />
-          <Projects />
-          <Contact />
-        </main>
+        <div id={"smooth-wrapper"}>
+          <main ref={mainRef} id={"smooth-content"}>
+            <Hero />
+            <About />
+            <Projects />
+            <Contact />
+          </main>
+        </div>
       )}
     </>
   );

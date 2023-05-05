@@ -17,4 +17,7 @@ export default defineConfig({
       { find: '@hooks', replacement: fileURLToPath(new URL('./src/hooks', import.meta.url)) },
     ],
   },
+  server: {
+    port: 3000,
+  },
 });

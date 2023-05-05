@@ -2,17 +2,8 @@ import React, { PropsWithChildren } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
-const TiltingCard = ({ children }: PropsWithChildren) => {
+const HaroCard = ({ children }: PropsWithChildren) => {
   return (
-    // <Tilt
-    //   className={"tilt"}
-    //   glareEnable={true}
-    //   glareMaxOpacity={0.1}
-    //   glareColor="white"
-    //   tiltMaxAngleX={2}
-    //   tiltMaxAngleY={2}
-    //   perspective={500}
-    // >
     <div>
       <motion.div
         className={"heroBG"}
@@ -41,8 +32,7 @@ const TiltingCard = ({ children }: PropsWithChildren) => {
         {children}
       </div>
     </div>
-    // </Tilt>
   );
 };
 
-export default TiltingCard;
+export default HaroCard;
