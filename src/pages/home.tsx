@@ -10,7 +10,8 @@ import "../index.scss";
 import CustomCursorContext from "@components/CustomCursor/context/customCursorContext";
 import gsap from "gsap-trial";
 import { ScrollTrigger } from "gsap-trial/ScrollTrigger";
-import { ScrollSmoother } from "../utils/gsap";
+// @ts-ignore
+import { ScrollSmoother } from "../utils/ScrollSmoother";
 
 export default function Home() {
   const [preloader, setPreloader] = useState(false);

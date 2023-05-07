@@ -9,7 +9,6 @@ import ScrollDownIndicator from "@sections/hero/scrolldownIndicator";
 import TitleLetter from "@sections/hero/titleLetter";
 import Subtitle from "@sections/hero/subtitle";
 import gsap from "gsap-trial";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const title = {
   hidden: {
