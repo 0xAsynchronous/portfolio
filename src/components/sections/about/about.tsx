@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import useOnScreen from "@hooks/useOnScreen";
-import gsap from "gsap-trial";
+import gsap from "gsap";
 import cn from "classnames";
 
 const About = () => {
@@ -8,13 +8,13 @@ const About = () => {
 
   const reveal = useOnScreen(ref, 0.6);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (reveal) {
       gsap.to("#about-title", {
-        duration: 3,
-        y: -40,
+        duration: 1,
+        y: -80,
         opacity: 1,
-        ease: "power2",
+        ease: "power2.in",
       });
     }
   }, [reveal]);

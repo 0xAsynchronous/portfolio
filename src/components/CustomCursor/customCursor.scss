@@ -178,6 +178,24 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .main-cursor {
+    display: none;
+  }
+
+  .secondary-cursor {
+    display: none;
+  }
+
+  .main-cursor-background {
+    display: none;
+  }
+
+  .secondary-cursor-background {
+    display: none;
+  }
+}
+
 html,
 body {
   &,

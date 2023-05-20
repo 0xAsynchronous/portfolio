@@ -1,34 +1,28 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useRef } from "react";
 import Hero from "@sections/hero/hero";
 import About from "@sections/about/about";
 import Projects from "@sections/projects/projects";
 import Contact from "@sections/contact/contact";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Preloader from "@components/preloader/preloader";
-import useLocoScroll from "@hooks/useLocoScroll";
 import "../index.scss";
 import CustomCursorContext from "@components/CustomCursor/context/customCursorContext";
-import gsap from "gsap-trial";
-import { ScrollTrigger } from "gsap-trial/ScrollTrigger";
-// @ts-ignore
-import { ScrollSmoother } from "../utils/ScrollSmoother";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useLocoScroll from "@hooks/useLocoScroll";
+import { gsap } from "gsap";
 
 export default function Home() {
-  const [preloader, setPreloader] = useState(false);
-  const { setType } = useContext(CustomCursorContext);
   const mainRef = useRef(null);
-  //useLocoScroll(!preloader, mainRef);
+  const [preloader, setPreloader] = useState(true);
+  const { setType } = useContext(CustomCursorContext);
+  // useLocoScroll(!preloader, mainRef);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-    ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      normalizeScroll: true,
-    });
+  // Registers GSAP plugins
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
   }, []);
 
+  // Makes interactive elements change cursor type
   useEffect(() => {
     const interactiveElements = document.querySelectorAll(".cursor-pointer");
 
@@ -53,14 +47,15 @@ export default function Home() {
       {preloader ? (
         <Preloader setPreloader={setPreloader} />
       ) : (
-        <div id={"smooth-wrapper"}>
-          <main ref={mainRef} id={"smooth-content"}>
+        <>
+          <header></header>
+          <main ref={mainRef} id={"main"}>
             <Hero />
             <About />
             <Projects />
             <Contact />
           </main>
-        </div>
+        </>
       )}
     </>
   );
