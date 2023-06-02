@@ -3,31 +3,29 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 
 const ScrollDownIndicator = () => {
-  const [scrolling, setScrolling] = useState(false);
-
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {});
     const scrolldownIndicatorExit = () => {
       ctx.add(() => {
         gsap.to(`.scrolldownContainer`, {
           scrollTrigger: {
-            trigger: "#main",
-            start: "13% center",
-            end: "20% center",
+            trigger: "#root",
+            start: "top top",
+            end: "+=800",
             immediateRender: false,
-            scrub: true,
+            toggleActions: "play none none reverse",
+            scrub: 1,
           },
           y: -200,
           opacity: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          onStart: () => setScrolling(true),
+          ease: "power2.in",
+          display: "none",
         });
       });
     };
     setTimeout(() => {
       scrolldownIndicatorExit();
-    }, 800);
+    }, 3400);
 
     return () => ctx.revert();
   }, []);
@@ -38,8 +36,6 @@ const ScrollDownIndicator = () => {
       animate={{ y: -100, opacity: 0.8 }}
       transition={{
         y: {
-          repeat: scrolling,
-          repeatType: "reverse",
           type: "tween",
           ease: "linear",
           duration: 1,
@@ -48,7 +44,7 @@ const ScrollDownIndicator = () => {
         delay: 2,
       }}
     >
-      <p className={"scrolldownText"}>Scroll Down</p>
+      <p className={"scrolldownText text-white text-opacity-50"}>Scroll Down</p>
       <motion.svg
         className={"scrolldownArrow"}
         width="24"

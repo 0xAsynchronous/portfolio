@@ -50,17 +50,18 @@ const TitleLetter = ({ letter }: TitleLetterProps) => {
       ctx.add(() => {
         gsap.to(`#letter${letter}`, {
           scrollTrigger: {
-            trigger: "#main",
-            start: "13% center",
-            end: "20% center",
+            trigger: "#root",
+            start: "top top",
+            end: "+=800",
             immediateRender: false,
-            scrub: true,
+            toggleActions: "play none none reverse",
+            scrub: 1,
           },
           x: position[letter as keyof typeof position].x,
           y: position[letter as keyof typeof position].y,
           rotation: random([90, -90]),
           opacity: 0,
-          ease: "power2.out",
+          ease: "power2.in",
         });
       });
     };

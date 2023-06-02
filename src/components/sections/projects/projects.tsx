@@ -1,7 +1,10 @@
 const Projects = () => {
   return (
-    <section className={"h-screen w-full flex flex-col justify-center"}>
-      <h1 className="m-auto text-9xl">Projects</h1>
+    <section className={"h-screen w-full px-40 mt-[1000px] relative z-30"}>
+      <h1
+        id={"projects-title"}
+        className={"mx-auto text-6xl opacity-1 text-center my-20"}
+      >Projects</h1>
     </section>
   );
 };

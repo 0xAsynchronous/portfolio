@@ -14,6 +14,11 @@ $screen-md: 768px;
   }
 }
 
+@layer components {
+  .section {
+    margin: 100px 50px;
+  }
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -39,8 +44,16 @@ h1 {
   padding: 0;
 }
 
+h2 {
+  font-family: Montserrat, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
 @font-face {
   font-family: "UltraSolar";
   src: local("UltraSolar"),
-  url("assets/fonts/UltraSolar/UltraSolar.ttf") format("truetype");
+    url("assets/fonts/UltraSolar/UltraSolar.ttf") format("truetype");
 }

@@ -10,6 +10,7 @@ import CustomCursorContext from "@components/CustomCursor/context/customCursorCo
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useLocoScroll from "@hooks/useLocoScroll";
 import { gsap } from "gsap";
+import { MainContext } from "../contexts/MainContext";
 
 export default function Home() {
   const mainRef = useRef(null);
@@ -23,7 +24,7 @@ export default function Home() {
   }, []);
 
   // Makes interactive elements change cursor type
-  useEffect(() => {
+  useLayoutEffect(() => {
     const interactiveElements = document.querySelectorAll(".cursor-pointer");
 
     const mouseEnterHandler = () => setType("pointer");
@@ -43,7 +44,7 @@ export default function Home() {
   }, [preloader]);
 
   return (
-    <>
+    <MainContext.Provider value={mainRef}>
       {preloader ? (
         <Preloader setPreloader={setPreloader} />
       ) : (
@@ -57,6 +58,6 @@ export default function Home() {
           </main>
         </>
       )}
-    </>
+    </MainContext.Provider>
   );
 }

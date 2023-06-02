@@ -39,35 +39,9 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [playSnap2]);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {});
-    const titleExit = () => {
-      ctx.add(() => {
-        gsap.to(`.titleContainer`, {
-          scrollTrigger: {
-            trigger: ".heroBG",
-            start: "bottom 97%",
-            end: "bottom 30%",
-            immediateRender: false,
-            scrub: true,
-          },
-          y: -200,
-          scale: 0.2,
-          ease: "power2.out",
-        });
-      });
-    };
-    setTimeout(() => {
-      titleExit();
-    }, 800);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <motion.section
-      className={"heroSection"}
-      style={{ background: "white" }}
+      className={"heroSection relative z-10"}
       ref={comp}
     >
       <MotionConfig

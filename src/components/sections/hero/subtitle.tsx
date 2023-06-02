@@ -1,45 +1,49 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useContext, useLayoutEffect, useRef, useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import gsap from "gsap";
+import { MainContext } from "../../../contexts/MainContext";
 const Subtitle = () => {
-  const [isAnimating, setIsAnimating] = useState(false);
+  const mainRef = useContext(MainContext);
+  const subtitleRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {});
+
     const subtitleExit = () => {
       ctx.add(() => {
-        gsap.to(`#subtitle`, {
+        gsap.to("#subtitle", {
           scrollTrigger: {
-            trigger: "#main",
-            start: "13% center",
-            end: "20% center",
+            trigger: "#root",
+            start: "top top",
+            end: "+=800",
             immediateRender: false,
-            scrub: true,
+            toggleActions: "play none none reverse",
+            scrub: 1,
           },
-          onStart: () => setIsAnimating(true),
           y: -200,
           opacity: 0,
-          ease: "power2.out",
+          ease: "power2.inOut",
+          display: "none",
         });
       });
     };
+
     setTimeout(() => {
       subtitleExit();
-    }, 800);
+    }, 1800);
 
     return () => ctx.revert();
   }, []);
 
   return (
     <motion.div
+      ref={subtitleRef}
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: -40, opacity: 1 }}
-      className={`noselect justify-center flex gap-2 ${
-        isAnimating ? null : "pointer-events-none"
-      }`}
+      className={`noselect justify-center flex gap-2`}
       id={"subtitle"}
       transition={{
-        delay: 0.6,
+        delay: 1,
         duration: 0.6,
       }}
     >
