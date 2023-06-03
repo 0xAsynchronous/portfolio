@@ -15,6 +15,7 @@ export default defineConfig({
       { find: '@fonts', replacement: fileURLToPath(new URL('./src/assets/fonts', import.meta.url)) },
       { find: '@sounds', replacement: fileURLToPath(new URL('./src/assets/sounds', import.meta.url)) },
       { find: '@hooks', replacement: fileURLToPath(new URL('./src/hooks', import.meta.url)) },
+      { find: '@utils', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) },
     ],
   },
   server: {

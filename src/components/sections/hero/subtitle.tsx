@@ -16,7 +16,6 @@ const Subtitle = () => {
             trigger: "#root",
             start: "top top",
             end: "+=800",
-            immediateRender: false,
             toggleActions: "play none none reverse",
             scrub: 1,
           },
